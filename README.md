@@ -135,7 +135,6 @@ Maros/
 ├── index.css               # Stylesheet utama
 ├── index.js                # JavaScript utama
 ├── README.md               # Dokumentasi ini
-├── FIREBASE_SETUP.md       # Panduan setup Firebase
 └── page/
     ├── html/
     │   ├── laporan.html    # Halaman pelaporan
