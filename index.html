@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAROS SIGAP — Beranda</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Firebase SDK (Compat Mode) -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="brand">
+          <div class="logo-box">MS</div>
+          <div>
+            <h6>MAROS SIGAP</h6>
+            <p>Sistem Informasi Geografis & Pelaporan</p>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link active">Beranda</a>
+          <a href="page/html/laporan.html" class="nav-link">Laporkan</a>
+          <a href="page/html/carakerja.html" class="nav-link">Cara Kerja</a>
+          <button
+            id="adminModeToggle"
+            class="admin-mode-toggle"
+            aria-label="Toggle admin mode"
+          >
+            <span class="admin-mode-label">Mode Admin:</span>
+            <span class="admin-mode-text">OFF</span>
+          </button>
+          <button
+            id="darkModeToggle"
+            class="dark-mode-toggle"
+            aria-label="Toggle dark mode"
+          >
+            <span class="dark-mode-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="title-line">Selamat Datang di</span>
+            <span class="title-main">MAROS SIGAP</span>
+          </h1>
+          <p class="hero-description">
+            Platform digital untuk melaporkan masalah fasilitas publik di
+            Kabupaten Maros. Laporan Anda membantu kami memperbaiki
+            infrastruktur lebih cepat dan efisien.
+          </p>
+          <div class="hero-cta">
+            <a href="page/html/laporan.html" class="btn-primary">Laporkan</a>
+            <a href="page/html/carakerja.html" class="btn-secondary"
+              >Cara Kerja</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Fitur Utama</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🗺️</div>
+            <h3>Peta Interaktif</h3>
+            <p>
+              Lokasi laporan ditampilkan secara real-time di peta interaktif
+              dengan akurasi tinggi
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3>Upload Foto</h3>
+            <p>
+              Lengkapi laporan dengan foto bukti untuk memudahkan proses
+              verifikasi dan perbaikan
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Tracking Status</h3>
+            <p>
+              Pantau status laporan Anda dari pending, diproses, hingga selesai
+              secara real-time
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Respon Cepat</h3>
+            <p>
+              Sistem yang dirancang untuk memberikan respon cepat terhadap
+              laporan warga
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-target="0">0</div>
+            <div class="stat-label">Total Laporan</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="0">0</div>
+            <div class="stat-label">Laporan Selesai</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="0">0</div>
+            <div class="stat-label">Dalam Proses</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 MAROS SIGAP — Prototype • Dibuat untuk lomba & demo</p>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="page/js/dark-mode.js"></script>
+    <script src="page/js/admin-mode.js"></script>
+    <script src="page/js/firebase-config.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

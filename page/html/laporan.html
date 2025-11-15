@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAROS SIGAP — Laporkan Masalah</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    
+    <!-- Firebase SDK (Compat Mode) -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/laporan.css">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="brand">
+          <div class="logo-box">MS</div>
+          <div>
+            <h6>MAROS SIGAP</h6>
+            <p>Sistem Informasi Geografis & Pelaporan</p>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="../../index.html" class="nav-link">Beranda</a>
+          <a href="laporan.html" class="nav-link active">Laporkan</a>
+          <a href="carakerja.html" class="nav-link">Cara Kerja</a>
+          <button id="adminModeToggle" class="admin-mode-toggle" aria-label="Toggle admin mode">
+            <span class="admin-mode-label">Mode Admin:</span>
+            <span class="admin-mode-text">OFF</span>
+          </button>
+          <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <span class="dark-mode-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="container">
+        <div class="page-header">
+          <h1 class="page-title">Laporkan Masalah</h1>
+          <p class="page-subtitle">Bantu perbaiki infrastruktur dengan melaporkan masalah yang Anda temui</p>
+        </div>
+
+        <!-- MAP SECTION -->
+        <div class="map-section">
+          <div id="map" class="map-container"></div>
+          <div class="map-controls">
+            <button id="locateBtn" class="btn-control">
+              <span class="btn-icon">📍</span>
+              Gunakan Lokasi Saya
+            </button>
+            <button id="pickManual" class="btn-control">
+              <span class="btn-icon">➕</span>
+              Tandai Lokasi Manual
+            </button>
+            <div class="map-stats">
+              Total laporan: <strong id="totalCount">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM & REPORTS SECTION -->
+        <div class="form-reports-section">
+          <!-- FORM SECTION -->
+          <div class="form-section">
+            <div class="form-card">
+              <h2 class="form-title">Form Laporan</h2>
+              
+              <form id="formReport" class="report-form">
+                <div class="form-group">
+                  <label class="form-label">
+                    Nama Pelapor <span class="required">*</span>
+                  </label>
+                  <input
+                    id="inpName"
+                    type="text"
+                    class="form-input"
+                    placeholder="Nama Anda (opsional)"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">
+                    Kategori <span class="required">*</span>
+                  </label>
+                  <select id="inpCategory" class="form-select" required>
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="Jalan">Jalan Rusak</option>
+                    <option value="Lampu">Lampu Jalan Mati</option>
+                    <option value="Drainase">Drainase Tersumbat</option>
+                    <option value="Sampah">Sampah Menumpuk</option>
+                    <option value="Fasilitas">Fasilitas Umum</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">
+                    Deskripsi <span class="required">*</span>
+                  </label>
+                  <textarea
+                    id="inpDesc"
+                    class="form-textarea"
+                    rows="4"
+                    placeholder="Jelaskan singkat masalahnya..."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Foto (opsional)</label>
+                  <input
+                    id="inpPhoto"
+                    type="file"
+                    accept="image/*"
+                    class="form-file"
+                  />
+                  <div id="photoPreview" class="photo-preview"></div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">
+                    Koordinat <span class="required">*</span>
+                  </label>
+                  <div class="coord-inputs">
+                    <input
+                      id="inpLat"
+                      type="number"
+                      step="any"
+                      class="form-input"
+                      placeholder="Latitude"
+                    />
+                    <input
+                      id="inpLng"
+                      type="number"
+                      step="any"
+                      class="form-input"
+                      placeholder="Longitude"
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                  <span>Kirim Laporan</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- REPORTS LIST -->
+          <div class="reports-section">
+            <div class="reports-card">
+              <div class="reports-header">
+                <h3 class="reports-title">Daftar Laporan</h3>
+                <button id="clearAll" class="btn-clear">Reset</button>
+              </div>
+              <div id="listReports" class="reports-list">
+                <!-- Reports will be injected here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="modal">
+      <div class="modal-content">
+        <div class="success-icon">✓</div>
+        <h2>Laporan Berhasil Dikirim!</h2>
+        <p>Terima kasih sudah berpartisipasi. Tim terkait akan meninjau dan menindaklanjuti laporan Anda.</p>
+        <div class="modal-actions">
+          <a href="../../index.html" class="btn-primary">Kembali ke Beranda</a>
+          <button id="btnViewReports" class="btn-secondary">Lihat Daftar Laporan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DETAIL CARD (floating) -->
+    <div id="detailCard" class="detail-card">
+      <div class="detail-header">
+        <strong id="detailCategory" class="detail-category">Kategori</strong>
+        <div id="detailStatus" class="detail-status"></div>
+      </div>
+      <div id="detailDesc" class="detail-desc">Deskripsi singkat</div>
+      <img id="detailImg" class="detail-image" src="" alt="" style="display: none" />
+      <div id="detailMeta" class="detail-meta">oleh: - • waktu</div>
+      <div class="detail-actions">
+        <button id="btnMarkProcessing" class="btn-action btn-warning">Set Diproses</button>
+        <button id="btnMarkDone" class="btn-action btn-success">Set Selesai</button>
+        <button id="btnDelete" class="btn-action btn-danger">Hapus</button>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/admin-mode.js"></script>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/laporan.js"></script>
+  </body>
+</html>
+

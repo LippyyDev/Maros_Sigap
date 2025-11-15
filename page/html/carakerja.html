@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAROS SIGAP — Cara Kerja</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/carakerja.css">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="brand">
+          <div class="logo-box">MS</div>
+          <div>
+            <h6>MAROS SIGAP</h6>
+            <p>Sistem Informasi Geografis & Pelaporan</p>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="../../index.html" class="nav-link">Beranda</a>
+          <a href="laporan.html" class="nav-link">Laporkan</a>
+          <a href="carakerja.html" class="nav-link active">Cara Kerja</a>
+          <button id="adminModeToggle" class="admin-mode-toggle" aria-label="Toggle admin mode">
+            <span class="admin-mode-label">Mode Admin:</span>
+            <span class="admin-mode-text">OFF</span>
+          </button>
+          <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <span class="dark-mode-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Cara Kerja MAROS SIGAP</h1>
+            <p class="hero-subtitle">
+              Pelajari bagaimana sistem ini membantu Anda melaporkan masalah 
+              fasilitas publik dengan mudah dan efisien
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEPS SECTION -->
+      <section class="steps-section">
+        <div class="container">
+          <div class="steps-grid">
+            <!-- Step 1 -->
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <div class="step-icon">📍</div>
+              <h3 class="step-title">Pilih Lokasi</h3>
+              <p class="step-description">
+                Gunakan peta interaktif untuk memilih lokasi masalah. Anda dapat menggunakan 
+                lokasi GPS Anda atau klik manual di peta untuk menentukan koordinat yang akurat.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <div class="step-icon">📝</div>
+              <h3 class="step-title">Isi Form Laporan</h3>
+              <p class="step-description">
+                Lengkapi form dengan kategori masalah, deskripsi detail, dan unggah foto 
+                bukti jika tersedia. Semakin lengkap informasi, semakin cepat proses penanganan.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <div class="step-icon">📤</div>
+              <h3 class="step-title">Kirim Laporan</h3>
+              <p class="step-description">
+                Setelah semua informasi lengkap, kirim laporan Anda. Sistem akan menyimpan 
+                dan menampilkan laporan di peta serta daftar laporan untuk tracking.
+              </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+              <div class="step-number">04</div>
+              <div class="step-icon">👀</div>
+              <h3 class="step-title">Pantau Status</h3>
+              <p class="step-description">
+                Pantau status laporan Anda: Pending (menunggu), Diproses (sedang ditangani), 
+                atau Selesai (sudah diperbaiki). Semua perubahan status dapat dilihat secara real-time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES DETAIL -->
+      <section class="features-section">
+        <div class="container">
+          <h2 class="section-title">Fitur & Keunggulan</h2>
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-icon">🗺️</div>
+              <div class="feature-content">
+                <h3>Peta Interaktif</h3>
+                <p>
+                  Menggunakan teknologi OpenStreetMap dengan Leaflet untuk menampilkan peta 
+                  interaktif yang akurat. Setiap laporan ditandai dengan marker di peta 
+                  sehingga mudah diidentifikasi lokasinya.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">📸</div>
+              <div class="feature-content">
+                <h3>Upload Foto Bukti</h3>
+                <p>
+                  Dukung laporan Anda dengan foto bukti. Foto membantu tim teknis memahami 
+                  kondisi masalah dengan lebih baik dan mempercepat proses verifikasi.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">📊</div>
+              <div class="feature-content">
+                <h3>Tracking Real-time</h3>
+                <p>
+                  Sistem menyimpan semua laporan di localStorage (untuk demo) dan menampilkan 
+                  status secara real-time. Dalam implementasi nyata, data akan tersimpan di 
+                  database backend.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <div class="feature-content">
+                <h3>Respon Cepat</h3>
+                <p>
+                  Dengan sistem digital ini, laporan dapat langsung diterima dan diproses 
+                  tanpa harus melalui proses manual yang memakan waktu. Efisiensi meningkat 
+                  dan masalah dapat ditangani lebih cepat.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">🔒</div>
+              <div class="feature-content">
+                <h3>Data Lokal (Demo)</h3>
+                <p>
+                  Untuk versi prototype ini, data disimpan di localStorage browser Anda. 
+                  Dalam implementasi produksi, data akan tersimpan di server dengan keamanan 
+                  dan backup yang lebih baik.
+                </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">🎯</div>
+              <div class="feature-content">
+                <h3>Kategori Masalah</h3>
+                <p>
+                  Sistem mendukung berbagai kategori laporan: Jalan Rusak, Lampu Jalan Mati, 
+                  Drainase Tersumbat, Sampah Menumpuk, dan Fasilitas Umum. Setiap kategori 
+                  memiliki prioritas penanganan yang berbeda.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH STACK -->
+      <section class="tech-section">
+        <div class="container">
+          <h2 class="section-title">Teknologi yang Digunakan</h2>
+          <div class="tech-grid">
+            <div class="tech-card">
+              <div class="tech-name">HTML5</div>
+              <p>Struktur modern dan semantic</p>
+            </div>
+            <div class="tech-card">
+              <div class="tech-name">CSS3</div>
+              <p>Styling modern dengan custom properties</p>
+            </div>
+            <div class="tech-card">
+              <div class="tech-name">JavaScript</div>
+              <p>Interaktivitas dan logika aplikasi</p>
+            </div>
+            <div class="tech-card">
+              <div class="tech-name">GSAP</div>
+              <p>Animasi smooth dan profesional</p>
+            </div>
+            <div class="tech-card">
+              <div class="tech-name">Leaflet</div>
+              <p>Peta interaktif OpenStreetMap</p>
+            </div>
+            <div class="tech-card">
+              <div class="tech-name">LocalStorage</div>
+              <p>Penyimpanan data lokal (demo)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA SECTION -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Siap Melaporkan Masalah?</h2>
+            <p>Mulai gunakan MAROS SIGAP sekarang dan bantu perbaiki infrastruktur bersama-sama</p>
+            <div class="cta-buttons">
+              <a href="laporan.html" class="btn-primary">Mulai Lapor</a>
+              <a href="../../index.html" class="btn-secondary">Kembali ke Beranda</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 MAROS SIGAP — Prototype • Dibuat untuk lomba & demo</p>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/admin-mode.js"></script>
+    <script src="../js/carakerja.js"></script>
+  </body>
+</html>
+
