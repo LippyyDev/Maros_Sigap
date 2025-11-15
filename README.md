@@ -206,21 +206,9 @@ Pastikan Security Rules dikonfigurasi dengan benar:
 - Read: Public (untuk demo)
 - Write: Authenticated users (untuk production)
 
-Lihat `FIREBASE_SETUP.md` untuk detail Security Rules.
-
-## 📝 Lisensi
-
-Aplikasi ini dibuat untuk keperluan demo dan lomba. Semua hak cipta dilindungi.
-
 ## 👥 Kontributor
 
-Dibuat untuk lomba dan demo - Kabupaten Maros
-
-## 📞 Support
-
-Untuk pertanyaan atau masalah, silakan hubungi tim pengembang.
-
----
+Muh Agil Zakaria, Muhammad ALif Qadri
 
 **MAROS SIGAP** - Prototype App untuk Pelaporan Infrastruktur Kabupaten Maros
 
